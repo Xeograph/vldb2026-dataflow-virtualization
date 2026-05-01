@@ -1,0 +1,9 @@
+BEGIN QUERY DATAFLOW
+  DECLARE @i INT = 0;
+  CREATE TABLE #temp (val INT);
+  WHILE (@i < 10) DO
+    INSERT INTO #temp VALUES (@i);
+    SET @i = @i + 1;
+  END WHILE;
+  RETURN SELECT * FROM #temp;
+END DATAFLOW;

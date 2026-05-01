@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ocient.research</groupId>
+    <artifactId>vldb2026-dataflow-experiments</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>VLDB 2026 Dataflow Virtualization Experiments</name>
+    <description>Java microbenchmark drivers for the VLDB 2026 paper on
+        virtualizing recursion in SQL.</description>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!--
+            The Ocient JDBC driver. This artifact is NOT verified to be on
+            Maven Central. If your build cannot resolve it, install it into
+            your local repository manually, e.g.:
+
+                mvn install:install-file \
+                    -Dfile=ocient-jdbc4-3.6.4-jar-with-dependencies.jar \
+                    -DgroupId=com.ocient \
+                    -DartifactId=ocient-jdbc4 \
+                    -Dversion=3.6.4 \
+                    -Dpackaging=jar
+
+            See experiments/java/README.md for details.
+        -->
+        <dependency>
+            <groupId>com.ocient</groupId>
+            <artifactId>ocient-jdbc4</artifactId>
+            <version>3.6.4</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <sourceDirectory>${project.basedir}</sourceDirectory>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
