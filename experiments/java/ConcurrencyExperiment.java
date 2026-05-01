@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ConcurrencyExperiment {
-    private static final String URL = "jdbc:ocient://go-sql0:4050/test";
-    private static final String USER = "admin@system";
-    private static final String PASS = "admin";
+    private static final String URL = System.getenv().getOrDefault("OCIENT_JDBC_URL", "jdbc:ocient://localhost:4050/test");
+    private static final String USER = System.getenv().getOrDefault("OCIENT_USER", "admin@system");
+    private static final String PASS = System.getenv().getOrDefault("OCIENT_PASSWORD", "");
 
     public static void main(String[] args) throws Exception {
         Class.forName("com.ocient.jdbc.JDBCDriver");

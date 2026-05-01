@@ -4,9 +4,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class DisconnectedHopExperiment {
-    private static final String URL = "jdbc:ocient://go-sql0:4050/test";
-    private static final String USER = "admin@system";
-    private static final String PASS = "admin";
+    private static final String URL = System.getenv().getOrDefault("OCIENT_JDBC_URL", "jdbc:ocient://localhost:4050/test");
+    private static final String USER = System.getenv().getOrDefault("OCIENT_USER", "admin@system");
+    private static final String PASS = System.getenv().getOrDefault("OCIENT_PASSWORD", "");
 
     // We use Linear Chains to strictly control the "Hop Count".
     // Disconnected: Start is at top of Huge Chain, End is at bottom of Tiny Chain.

@@ -5,9 +5,9 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 
 public class DematerializationExperiment {
-    private static final String URL = "jdbc:ocient://go-sql0:4050/test";
-    private static final String USER = "admin@system";
-    private static final String PASS = "admin";
+    private static final String URL = System.getenv().getOrDefault("OCIENT_JDBC_URL", "jdbc:ocient://localhost:4050/test");
+    private static final String USER = System.getenv().getOrDefault("OCIENT_USER", "admin@system");
+    private static final String PASS = System.getenv().getOrDefault("OCIENT_PASSWORD", "");
     
     // The new build threshold: 64 * 1024
     private static final int THRESHOLD = 65536;

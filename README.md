@@ -68,12 +68,14 @@ The Ocient JDBC driver (`com.ocient:ocient-jdbc4:3.6.4`) may need to be
 installed manually if it is not available on your configured Maven
 remotes; see `experiments/java/README.md`.
 
-Run an experiment (after editing the JDBC URL at the top of the
-relevant `.java` file to point at your cluster):
+Run an experiment (set environment variables to point at your cluster):
 
 ```
-java -cp target/vldb2026-dataflow-experiments-1.0.0.jar:/path/to/ocient-jdbc4-3.6.4-jar-with-dependencies.jar \
-     RecursionExperiment
+export OCIENT_JDBC_URL="jdbc:ocient://<sql-node-host>:4050/<database>"
+export OCIENT_USER="<your-user>"
+export OCIENT_PASSWORD="<your-password>"
+
+java -cp target/vldb2026-dataflow-experiments-1.0.0.jar:/path/to/ocient-jdbc4-3.6.4-jar-with-dependencies.jar      RecursionExperiment
 ```
 
 Run a dataflow listing by piping it through the Ocient SQL CLI of your

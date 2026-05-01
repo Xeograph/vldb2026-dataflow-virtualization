@@ -10,9 +10,9 @@ import java.util.Random;
 public class CteVsTableCrossover {
 
     // --- CONFIGURATION ---
-    private static final String URL = "jdbc:ocient://go-sql0:4050/test";
-    private static final String USER = "admin@system";
-    private static final String PASS = "admin";
+    private static final String URL = System.getenv().getOrDefault("OCIENT_JDBC_URL", "jdbc:ocient://localhost:4050/test");
+    private static final String USER = System.getenv().getOrDefault("OCIENT_USER", "admin@system");
+    private static final String PASS = System.getenv().getOrDefault("OCIENT_PASSWORD", "");
 
     // Test range: 1,000 to 256,000 rows
     private static final int START_ITEMS = 1_000;

@@ -7,9 +7,9 @@ public class BidirectionalExperiment {
     // ---------------------------------------------------------
     // CONFIGURATION
     // ---------------------------------------------------------
-    private static final String URL = "jdbc:ocient://go-sql0:4050/test";
-    private static final String USER = "admin@system";
-    private static final String PASS = "admin";
+    private static final String URL = System.getenv().getOrDefault("OCIENT_JDBC_URL", "jdbc:ocient://localhost:4050/test");
+    private static final String USER = System.getenv().getOrDefault("OCIENT_USER", "admin@system");
+    private static final String PASS = System.getenv().getOrDefault("OCIENT_PASSWORD", "");
 
     // We only need enough rows to reach depth 14 (2^14 = 16,384)
     // A graph size of 20,000 is plenty and very fast to build.

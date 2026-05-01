@@ -57,19 +57,23 @@ The companion paper repo does **not** redistribute the JDBC jar.
 
 ## Running
 
-Each experiment hard-codes a JDBC URL at the top of the file (search for
-`private static final String URL`). Edit it to point at your Ocient
-cluster. The default placeholder is:
+The experiments read the JDBC URL, username, and password from
+environment variables (with sensible defaults for a local-development
+cluster). Set the following before launching each experiment:
 
 ```
-jdbc:ocient://<sql-node-host>:4050/<database>
+export OCIENT_JDBC_URL="jdbc:ocient://<sql-node-host>:4050/<database>"
+export OCIENT_USER="<your-user>"
+export OCIENT_PASSWORD="<your-password>"
 ```
 
-with username `admin@system` (replace as appropriate). Then:
+Defaults are `jdbc:ocient://localhost:4050/test`, `admin@system`, and
+empty password (a connection failure if your cluster expects one).
+
+Then run:
 
 ```
-java -cp target/vldb2026-dataflow-experiments-1.0.0.jar:/path/to/ocient-jdbc4-3.6.4-jar-with-dependencies.jar \
-     RecursionExperiment
+java -cp target/vldb2026-dataflow-experiments-1.0.0.jar:/path/to/ocient-jdbc4-3.6.4-jar-with-dependencies.jar      RecursionExperiment
 ```
 
 Substitute the desired class name to run a different experiment. Most

@@ -9,9 +9,9 @@ import java.util.List;
 public class DeepRecursionExperiment {
 
     // --- CONFIGURATION ---
-    private static final String URL = "jdbc:ocient://go-sql0:4050/test";
-    private static final String USER = "admin@system";
-    private static final String PASS = "admin";
+    private static final String URL = System.getenv().getOrDefault("OCIENT_JDBC_URL", "jdbc:ocient://localhost:4050/test");
+    private static final String USER = System.getenv().getOrDefault("OCIENT_USER", "admin@system");
+    private static final String PASS = System.getenv().getOrDefault("OCIENT_PASSWORD", "");
 
     // Deep Recursion Steps: 100 to 1000
     private static final int[] STEPS_TO_TEST = {100, 200, 300, 400, 500, 600, 700, 800, 900, 1000};

@@ -9,9 +9,9 @@ import java.util.List;
 public class RecursionExperiment {
 
     // --- CONFIGURATION ---
-    private static final String URL = "jdbc:ocient://go-sql0:4050/test";
-    private static final String USER = "admin@system";
-    private static final String PASS = "admin";
+    private static final String URL = System.getenv().getOrDefault("OCIENT_JDBC_URL", "jdbc:ocient://localhost:4050/test");
+    private static final String USER = System.getenv().getOrDefault("OCIENT_USER", "admin@system");
+    private static final String PASS = System.getenv().getOrDefault("OCIENT_PASSWORD", "");
 
     // Steps to test
     private static final int[] STEPS_TO_TEST = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};

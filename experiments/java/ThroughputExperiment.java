@@ -9,9 +9,9 @@ import java.util.List;
 public class ThroughputExperiment {
 
     // --- CONFIGURATION ---
-    private static final String URL = "jdbc:ocient://go-sql0:4050/test";
-    private static final String USER = "admin@system";
-    private static final String PASS = "admin";
+    private static final String URL = System.getenv().getOrDefault("OCIENT_JDBC_URL", "jdbc:ocient://localhost:4050/test");
+    private static final String USER = System.getenv().getOrDefault("OCIENT_USER", "admin@system");
+    private static final String PASS = System.getenv().getOrDefault("OCIENT_PASSWORD", "");
     
     // Scaling Row Counts: 1K, 10K, 100K, 1M, 5M, 10M
     private static final int[] SIZES = {1_000, 10_000, 100_000, 1_000_000, 5_000_000, 10_000_000};

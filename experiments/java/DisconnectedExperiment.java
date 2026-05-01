@@ -4,9 +4,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class DisconnectedExperiment {
-    private static final String URL = "jdbc:ocient://go-sql0:4050/test";
-    private static final String USER = "admin@system";
-    private static final String PASS = "admin";
+    private static final String URL = System.getenv().getOrDefault("OCIENT_JDBC_URL", "jdbc:ocient://localhost:4050/test");
+    private static final String USER = System.getenv().getOrDefault("OCIENT_USER", "admin@system");
+    private static final String PASS = System.getenv().getOrDefault("OCIENT_PASSWORD", "");
 
     // 1. The "Continent" (Huge Component)
     private static final int HUGE_SIZE = 5_000_000; // 5 Million edges
