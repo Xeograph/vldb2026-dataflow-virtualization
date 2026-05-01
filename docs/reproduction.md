@@ -38,23 +38,10 @@ Spark cluster was used (see paper Section 12.5 for details).
 | **Experiment 2** - Deep Recursion Scalability (up to 600 iterations; JIT Dataflow vs. Unrolled SQL) | `DeepRecursionExperiment.java` | |
 | **Experiment 3** - Throughput Scaling & Thresholds (5-iteration loop, 1k..10M rows, virtualization-to-physical crossover) | `ThroughputExperiment.java` | Targets the 65,536-row threshold. |
 | **Experiment 4** - Dynamic Dematerialization (reduction dataflow; 200k rows down to 0) | `DematerializationExperiment.java` | |
-| **Experiment 5** - Hyperscale WCC (synthetic Zipfian graphs; Spark vs. Ocient Legacy vs. Ocient Dataflow) | `KCoreExperiment.java` (and the `wcc.sql` dataflow) plus the missing data-generation scripts (TODO) | Requires the EPYC cluster shape above. Synthetic graph generator not yet bundled. |
+| **Experiment 5** - Hyperscale WCC (synthetic Zipfian graphs; Spark vs. Ocient Legacy vs. Ocient Dataflow) | `dataflows/wcc.sql` (executed directly via `BEGIN DATAFLOW` against the EPYC cluster). The synthetic graph generator is not bundled (TODO; see `data/README.md`). |
 
-## Supporting experiments referenced in the paper but not pinned to a numbered experiment
-
-| Driver | Purpose |
-| ------ | ------- |
-| `BidirectionalExperiment.java`   | Validates the Bidirectional Search optimization. |
-| `ConcurrencyExperiment.java`     | Concurrent dataflow execution stress test. |
-| `CteVsTableCrossover.java`       | CTE-vs-temp-table crossover behavior. |
-| `DisconnectedExperiment.java`    | WCC on graphs with many small components. |
-| `DisconnectedHopExperiment.java` | Hop-count behavior on disconnected graphs. |
-| `HighFanoutExperiment.java`      | High-fanout traversal stress test. |
 
 ## TODOs
 
 - **Experiment 5 input graphs.** The Zipfian synthetic graph generator is
   not yet bundled. See `data/README.md`.
-- **`ViewOptimizationExperiment.java`** is referenced by the source tree
-  but only the compiled `.class` survives. The source must be recovered
-  before its experiment can be reproduced.

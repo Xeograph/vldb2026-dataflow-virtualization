@@ -32,14 +32,8 @@ files are the dataflow programs shown in the paper's listings.
 │       ├── README.md
 │       ├── pom.xml
 │       ├── BidirectionalExperiment.java
-│       ├── ConcurrencyExperiment.java
-│       ├── CteVsTableCrossover.java
 │       ├── DeepRecursionExperiment.java
 │       ├── DematerializationExperiment.java
-│       ├── DisconnectedExperiment.java
-│       ├── DisconnectedHopExperiment.java
-│       ├── HighFanoutExperiment.java
-│       ├── KCoreExperiment.java
 │       ├── RecursionExperiment.java
 │       └── ThroughputExperiment.java
 ├── dataflows/
@@ -86,11 +80,7 @@ script.
 
 Some artifacts are still being prepared. Synthetic graph generation
 scripts for Experiment 5 are not yet bundled (TODO; see
-`data/README.md`). A 12th experiment driver
-(`ViewOptimizationExperiment.java`) is referenced in the source tree
-but only the compiled `.class` survives in the author's working
-directory; the Java source needs to be recovered before that
-experiment can be reproduced.
+`data/README.md`).
 
 ## License
 

@@ -13,18 +13,8 @@ experiment scenario, and prints results to stdout (and in some cases CSV).
 | `DeepRecursionExperiment.java`    | Experiment 2 (deep recursion: up to 600 iterations) |
 | `ThroughputExperiment.java`       | Experiment 3 (throughput across the 65,536-row threshold) |
 | `DematerializationExperiment.java`| Experiment 4 (reduction dataflow / dynamic dematerialization) |
-| `KCoreExperiment.java`            | Hyperscale graph workload (k-core variant; supports Experiment 5) |
-| `BidirectionalExperiment.java`    | Bidirectional search dataflow (Section on optimized search) |
-| `ConcurrencyExperiment.java`      | Concurrent dataflow execution stress test |
-| `CteVsTableCrossover.java`        | CTE-vs-temp-table crossover measurement |
-| `DisconnectedExperiment.java`     | WCC on disconnected components |
-| `DisconnectedHopExperiment.java`  | WCC variant measuring hop counts on disconnected graphs |
-| `HighFanoutExperiment.java`       | High-fanout traversal experiment |
+| `BidirectionalExperiment.java`    | Bidirectional search dataflow (Section 11.1 case study) |
 
-> Note: a 12th experiment, `ViewOptimizationExperiment.java`, is referenced
-> in the source tree but only the compiled `.class` was preserved on the
-> author's machine. The Java source is missing; see the TODO in the
-> top-level README.
 
 ## Build
 
