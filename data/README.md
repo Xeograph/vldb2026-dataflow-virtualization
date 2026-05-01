@@ -12,10 +12,15 @@ This directory is reserved for the datasets used by the paper's experiments.
 - **Experiment 5 (Hyperscale WCC)** consumes pre-built `bench_vertices` /
   `bench_edges` tables (one schema per scale: `wcc100m`, `wcc1b`, `wcc10b`,
   `wcc100b`, `wcc1t`). The original input graphs were Zipfian (power-law)
-  distributions generated via a separate Ocient dataflow against the EPYC
-  cluster used in Section 12.5. The generator script is **not bundled here**
-  yet --- the source we used has not been preserved as a clean reusable
-  artifact. Reproducing Experiment 5 against a fresh cluster therefore
-  requires producing equivalent input tables yourself; the
-  `BenchmarkConnectedComponents.java` driver assumes those tables already
-  exist.
+  distributions; we provide a generator that reproduces inputs of the same
+  shape and structure at any of those scales:
+
+      cd experiments/data_gen
+      python generate_zipfian_graph.py --scale wcc1b
+
+  See `experiments/data_gen/README.md` for full usage. The original
+  generator script the paper used was not preserved as a clean reusable
+  artifact, so this replacement uses the same `<schema>.bench_vertices` /
+  `<schema>.bench_edges` table structure with a power-law endpoint sampler;
+  the random seed is not preserved, so numbers will be qualitatively
+  similar to but not bit-identical with the paper's reported results.
