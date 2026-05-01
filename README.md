@@ -31,6 +31,7 @@ files are the dataflow programs shown in the paper's listings.
 │   └── java/
 │       ├── README.md
 │       ├── pom.xml
+│       ├── BenchmarkConnectedComponents.java
 │       ├── BidirectionalExperiment.java
 │       ├── DeepRecursionExperiment.java
 │       ├── DematerializationExperiment.java

@@ -1,17 +1,21 @@
 # Datasets
 
-This directory is reserved for the datasets used by the paper's
-experiments.
+This directory is reserved for the datasets used by the paper's experiments.
 
 ## Status
 
-**TODO:** Synthetic graph generation scripts are not yet bundled. The
-paper's Experiment 5 used Zipfian (power-law) synthetic graphs at
-hyperscale. The generator and the parameters needed to reproduce those
-graphs are still being prepared and will be added here.
+- **Experiments 1--4** generate their own input tables in-process. Each Java driver
+  in `experiments/java/` builds its working set with a `CREATE TABLE ... AS SELECT
+  ... FROM sys.dummyN` against the engine's built-in `sys.dummy*` row-source views,
+  so no separate dataset is needed before launching them.
 
-Likewise, the smaller graphs used to seed Experiments 1-4 (linear chains,
-high-fanout DAGs, disconnected components, k-core stress inputs) are
-generated programmatically by the Java drivers in `experiments/java/`;
-each driver creates and populates its own input tables at startup. Where
-that is not the case, a separate generator will be added here.
+- **Experiment 5 (Hyperscale WCC)** consumes pre-built `bench_vertices` /
+  `bench_edges` tables (one schema per scale: `wcc100m`, `wcc1b`, `wcc10b`,
+  `wcc100b`, `wcc1t`). The original input graphs were Zipfian (power-law)
+  distributions generated via a separate Ocient dataflow against the EPYC
+  cluster used in Section 12.5. The generator script is **not bundled here**
+  yet --- the source we used has not been preserved as a clean reusable
+  artifact. Reproducing Experiment 5 against a fresh cluster therefore
+  requires producing equivalent input tables yourself; the
+  `BenchmarkConnectedComponents.java` driver assumes those tables already
+  exist.

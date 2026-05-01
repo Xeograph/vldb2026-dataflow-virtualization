@@ -14,6 +14,7 @@ experiment scenario, and prints results to stdout (and in some cases CSV).
 | `ThroughputExperiment.java`       | Experiment 3 (throughput across the 65,536-row threshold) |
 | `DematerializationExperiment.java`| Experiment 4 (reduction dataflow / dynamic dematerialization) |
 | `BidirectionalExperiment.java`    | Bidirectional search dataflow (Section 11.1 case study) |
+| `BenchmarkConnectedComponents.java` | Experiment 5 (Hyperscale WCC). Edit the `CURRENT_SCALE` field to pick `SCALE_100M`/`_1B`/`_10B`/`_100B`/`_1T`. Requires `<schema>.bench_vertices` and `<schema>.bench_edges` to already exist on the cluster --- see `../../data/README.md`. |
 
 
 ## Build
