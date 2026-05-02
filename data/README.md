@@ -1,6 +1,8 @@
-# Datasets
+# Data and Comparison Harnesses
 
-This directory is reserved for the datasets used by the paper's experiments.
+This directory holds the cross-engine WCC comparison harnesses used in
+Section 12.5 of the paper, and acts as the staging area for input
+datasets used by other experiments.
 
 ## Status
 
@@ -10,12 +12,57 @@ This directory is reserved for the datasets used by the paper's experiments.
   `sys.dummy*` row-source views, so no separate dataset is needed before
   launching them.
 
-- **Experiment 5 (Hyperscale WCC)** consumes pre-built `bench_vertices` /
-  `bench_edges` tables (one schema per scale: `wcc100m`, `wcc1b`, `wcc10b`,
-  `wcc100b`, `wcc1t`). The synthetic Zipfian (power-law) generator is
-  bundled at `experiments/data_gen/generate_zipfian_graph.py`:
+- **Experiment 5 (Hyperscale WCC)** on Ocient consumes pre-built
+  `bench_vertices` / `bench_edges` tables (one schema per scale:
+  `wcc100m`, `wcc1b`, `wcc10b`, `wcc100b`, `wcc1t`). The synthetic
+  Zipfian (power-law) generator is bundled at
+  `experiments/data_gen/generate_zipfian_graph.py`:
 
       cd experiments/data_gen
       python generate_zipfian_graph.py --scale wcc1b
 
   See `experiments/data_gen/README.md` for full usage.
+
+- **Section 12.5 cross-engine comparison** (DuckDB and Umbra on GCP)
+  uses the harnesses in this directory: `duckdb_wcc_bench.py` and
+  `umbra_wcc_bench.py`. Each harness generates the same Zipfian
+  distribution (`alpha = 1.5`, seed `42`) used by the Ocient runs, then
+  loads it into the target engine and runs the label-propagation WCC
+  shown in `../dataflows/wcc.sql`.
+
+## Cross-engine harness usage
+
+```sh
+# DuckDB (single-node, in-process). v1.5 or later.
+pip install duckdb numpy
+python3 duckdb_wcc_bench.py --scale 1b
+
+# Umbra (single-node, PostgreSQL wire protocol). Container image at
+# umbradb/umbra:latest; default credentials postgres/postgres.
+docker run -d --name umbra --ulimit memlock=-1:-1 -p 5432:5432 \
+    umbradb/umbra:latest
+pip install psycopg2-binary numpy
+python3 umbra_wcc_bench.py --scale 1b
+```
+
+Each harness writes one JSONL line per run to `<engine>_results.jsonl`
+with the WCC wall time, iteration count, and component count. Both
+harnesses accept `--scale {100m, 1b, 10b}` and pass through `--alpha`,
+`--host`, etc.
+
+The numbers in the paper's Table 7a were collected on two GCP shapes:
+
+* `n2-highmem-32` (Intel Cascade Lake, 32 vCPU, 256 GB RAM)
+* `n2d-highmem-96` (AMD EPYC Milan-X, 96 vCPU, 755 GB RAM)
+
+Section 12.5.4 explains the per-node hardware correction used to
+extrapolate the `n2d-highmem-96` measurements onto a single Ocient
+EPYC 9654 node for the comparison in Table 7b.
+
+## Note on a fourth engine
+
+A reviewer-requested Vertica comparison was also conducted on the same
+two GCP shapes. The OpenText (formerly Micro Focus) End-User License
+Agreement that governs Vertica Community Edition forbids publishing
+benchmark results without prior written consent, so those numbers are
+not in the paper or this repository.

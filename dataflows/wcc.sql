@@ -1,3 +1,15 @@
+-- Weakly Connected Components (WCC) Dataflow
+-- Companion to Listing 9 ("Weakly Connected Components (WCC)") in
+-- "Virtualizing Recursion: JIT Graph Analytics in a Hyperscale Relational
+-- Warehouse," VLDB 2026.
+--
+-- Section 11.3 of the paper. Label-propagation: every node initially
+-- holds its own ID as its label, then in each iteration takes the
+-- minimum label of its neighbors. Terminates when no labels change.
+-- This is the algorithm measured at 100M, 1B, 10B, 100B, and 1T edges
+-- in Section 12.5; the comparison harnesses in data/ implement the
+-- same algorithm against DuckDB and Umbra.
+
 BEGIN DATAFLOW
   DECLARE @changes INT = 1;
 

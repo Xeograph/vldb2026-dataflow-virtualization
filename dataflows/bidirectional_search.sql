@@ -1,3 +1,13 @@
+-- Bidirectional Search Dataflow
+-- Companion to Listing 7 ("Optimized Dataflow Bidirectional Search") in
+-- "Virtualizing Recursion: JIT Graph Analytics in a Hyperscale Relational
+-- Warehouse," VLDB 2026.
+--
+-- Section 11.1 of the paper. Two coupled BFS frontiers expanding from
+-- @startNode and @endNode; terminates as soon as the frontiers meet.
+-- Mutually recursive over @found, which a single WITH RECURSIVE CTE
+-- cannot express directly.
+
 BEGIN DATAFLOW
   DECLARE @found INT = 0;
 

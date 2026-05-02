@@ -1,3 +1,13 @@
+-- Stable Marriage Dataflow
+-- Companion to Listing 8 ("Stable Marriage Dataflow") in
+-- "Virtualizing Recursion: JIT Graph Analytics in a Hyperscale Relational
+-- Warehouse," VLDB 2026.
+--
+-- Section 11.2 of the paper. The classical Gale-Shapley algorithm
+-- expressed as a Dataflow loop: propose, evaluate, reject, repeat.
+-- This is non-monotonic (DELETE inside the loop body) and therefore
+-- not expressible in a single WITH RECURSIVE CTE.
+
 BEGIN QUERY DATAFLOW
   DECLARE @changes INT = 1;
 
