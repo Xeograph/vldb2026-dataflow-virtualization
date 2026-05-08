@@ -22,8 +22,8 @@ Required custom build: branch ``jarnold/db-vldb-ablation`` (or any tip
 that includes the ``dataflowHoldsSlotForFullLifetime`` mutable parameter).
 
 Usage:
-    OCIENT_JDBC_URL=jdbc:ocient://olap-sql01:4050/tpc \\
-    OCIENT_USER=admin@system OCIENT_PASSWORD=admin \\
+    OCIENT_JDBC_URL=jdbc:ocient://<sql-node>:4050/tpc \\
+    OCIENT_USER=admin@system OCIENT_PASSWORD=<password> \\
     python harness_release_acquire.py
 """
 from __future__ import annotations

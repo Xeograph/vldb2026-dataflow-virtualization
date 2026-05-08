@@ -15,7 +15,7 @@ Outputs raw CSVs under `./skew_run_<timestamp>/` for offline analysis.
 
 ```
 python harness_1t_skew.py \
-    --foundation-nodes olap-foundation01..olap-foundation08
+    --foundation-nodes <foundation-node-1>..<foundation-node-N>
 ```
 
 Set `--ssh-user` if SSH login is not the current user. `--skip-dataflow`
@@ -49,5 +49,4 @@ release-acquire scheduling.
 python harness_release_acquire.py
 ```
 
-Requires a custom build that includes the `dataflowHoldsSlotForFullLifetime`
-mutable parameter (Xeograph/xgsrc PR #47580 or any tip past it).
+Requires a custom build of the database engine that exposes the `dataflowHoldsSlotForFullLifetime` mutable parameter as a session-level toggle.

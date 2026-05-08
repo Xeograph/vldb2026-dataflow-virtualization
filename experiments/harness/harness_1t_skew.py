@@ -3,15 +3,15 @@
 
 Submits the WCC dataflow against ``wcc1t.bench_edges`` on an Ocient cluster
 and, in parallel, collects per-second resource samples from every Foundation
-node (configurable, default ``olap-foundation01..08``) via SSH. After the
+node (configurable, default ``<foundation-node-1>..<foundation-node-N>``) via SSH. After the
 dataflow completes, the collected CSVs are pulled back, merged, and a small
 summary is printed (max/median CPU/IO ratios across nodes per minute).
 
 Usage:
-    OCIENT_JDBC_URL=jdbc:ocient://olap-sql01:4050/tpc \\
-    OCIENT_USER=admin@system OCIENT_PASSWORD=admin \\
+    OCIENT_JDBC_URL=jdbc:ocient://<sql-node>:4050/tpc \\
+    OCIENT_USER=admin@system OCIENT_PASSWORD=<password> \\
     python harness_1t_skew.py \\
-        --foundation-nodes olap-foundation01..olap-foundation08 \\
+        --foundation-nodes <foundation-node-1>..<foundation-node-N> \\
         --output-dir ./skew_run_$(date +%Y%m%d_%H%M%S)
 
 Notes:
@@ -75,7 +75,7 @@ END DATAFLOW;
 
 
 def expand_node_range(spec: str) -> list[str]:
-    """Expand 'olap-foundation01..olap-foundation08' or comma list into nodes."""
+    """Expand '<foundation-node-1>..<foundation-node-N>' or comma list into nodes."""
     if ".." in spec:
         lo, hi = spec.split("..", 1)
         m_lo = re.match(r"(.*?)(\d+)$", lo)
@@ -194,8 +194,8 @@ def summarize(out_dir: Path, foundation_nodes: list[str]) -> None:
 
 def main() -> int:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("--foundation-nodes", default="olap-foundation01..olap-foundation08",
-                   help="range or comma list (default: olap-foundation01..olap-foundation08)")
+    p.add_argument("--foundation-nodes", default="<foundation-node-1>..<foundation-node-N>",
+                   help="range or comma list (default: <foundation-node-1>..<foundation-node-N>)")
     p.add_argument("--ssh-user", default=None, help="SSH login user for the foundation nodes (default: current user)")
     p.add_argument("--output-dir", default=None, help="output directory for CSV samples; default: ./skew_run_<ts>")
     p.add_argument("--skip-dataflow", action="store_true",
