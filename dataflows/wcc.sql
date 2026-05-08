@@ -32,7 +32,7 @@ BEGIN DATAFLOW
     CREATE OR REPLACE TABLE #Labels AS
       SELECT
         l.node_id,
-        MIN(u.new_label, l.label) AS label
+        LEAST(COALESCE(u.new_label, l.label), l.label) AS label
       FROM #Labels l
       LEFT JOIN #Updates u ON l.node_id = u.node_id;
 
