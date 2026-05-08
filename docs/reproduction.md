@@ -6,7 +6,7 @@ cluster shape used in the original measurements.
 
 ## Cluster shape (Experiments 1 through 4)
 
-Per Section 12 ("Experimental Setup") of the paper, Experiments 1-4 ran
+Per Section 9 ("Experimental Setup") of the paper, Experiments 1-4 ran
 on an Ocient cluster:
 
 - **2 SQL Nodes** (Coordinators)
@@ -28,7 +28,7 @@ Experiment 5 used a distinct, higher-capacity cluster:
 - **Memory:** 2.3 TB RAM per node (24 x 96 GB)
 
 For the Spark comparison run in Experiment 5, a separate 5-node Apache
-Spark cluster was used (see paper Section 12.5 for details).
+Spark cluster was used (see paper Section 9.7 for details).
 
 ## Experiment-to-driver mapping
 

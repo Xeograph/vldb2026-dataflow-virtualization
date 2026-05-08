@@ -10,7 +10,7 @@ The edge endpoint sampler uses inverse-CDF style:
     rank = floor(N * U^alpha) + 1, U ~ Uniform(0,1)
 which produces a heavy-tailed distribution similar in shape to a Zipfian
 draw with skew parameter s ~ alpha. This is not a strict-Zipf RNG, but it
-reproduces the power-law degree distribution the paper's Section 12.5
+reproduces the power-law degree distribution the paper's Section 9.7
 inputs were generated with.
 
 Usage:
@@ -43,7 +43,7 @@ except ImportError:
 
 
 # Mapping from logical scale name to (num_vertices, num_edges).
-# Keep in sync with the paper's Section 12.5 schemas.
+# Keep in sync with the paper's Section 9.7 schemas.
 SCALES: dict[str, Tuple[int, int]] = {
     "wcc100m": (10_000_000, 100_000_000),
     "wcc1b": (100_000_000, 1_000_000_000),

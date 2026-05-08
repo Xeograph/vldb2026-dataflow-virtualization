@@ -1,9 +1,9 @@
 -- PageRank (Append-Only) Dataflow
--- Companion to Listing 10 ("PageRank Dataflow (Append-Only)") in
+-- Reference implementation of the PageRank case study from
 -- "Virtualizing Recursion: JIT Graph Analytics in a Hyperscale Relational
 -- Warehouse," VLDB 2026.
 --
--- Section 11.4 of the paper. PageRank is iterated until the L1 norm of
+-- Section 8.4 of the paper. PageRank is iterated until the L1 norm of
 -- the rank-vector delta drops below epsilon. The "swap pattern" used
 -- here (rebuild the rank vector as a fresh table each iteration, drop
 -- the old one) is the Dataflow analogue of an UPDATE on append-only

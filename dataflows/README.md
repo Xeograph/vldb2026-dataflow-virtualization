@@ -4,13 +4,13 @@ These files are the dataflow programs exhibited in the paper's listings.
 Each file maps to a specific listing in the camera-ready PDF and is
 runnable on an Ocient cluster of version `25.0` or later.
 
-| File | Paper listing | Section |
+| File | Paper section | Notes |
 | --- | --- | --- |
-| `khop_reachability.sql` | Listing 2: "The transpiled imperative Dataflow" | 1.1 (Running Example) |
-| `bidirectional_search.sql` | Listing 7: "Optimized Dataflow Bidirectional Search" | 11.1 |
-| `stable_marriage.sql` | Listing 8: "Stable Marriage Dataflow" | 11.2 |
-| `wcc.sql` | Listing 9: "Weakly Connected Components (WCC)" | 11.3 |
-| `pagerank.sql` | Listing 10: "PageRank Dataflow (Append-Only)" | 11.4 |
+| `khop_reachability.sql` | 1.1 Running Example | Listing 2 in the paper, transpiled imperative Dataflow form |
+| `bidirectional_search.sql` | 8.1 Bidirectional Search | Reference implementation; full code omitted from paper for length |
+| `stable_marriage.sql` | 8.2 Iterative Matching | Reference implementation; full code omitted from paper for length |
+| `wcc.sql` | 8.3 Weakly Connected Components | Reference implementation; full code omitted from paper for length |
+| `pagerank.sql` | 8.4 PageRank | Reference implementation; full code omitted from paper for length |
 
 ## Schema assumptions
 
@@ -32,11 +32,11 @@ xgp -h <sqlnode> -p 4051 -u <user> -d <db> -f wcc.sql
 `@start_node`, `@max_depth`, `@startNode`, `@endNode` and the other
 session parameters used in the listings are bound either via session
 variables (`SET @start_node = 42;`) or via the `WITH RECURSIVE`
-parameter mechanism described in Section 6.
+parameter mechanism described in Section 3.
 
 ## Comparison harnesses
 
 The DuckDB and Umbra harnesses in `../data/` re-implement the WCC
 listing (`wcc.sql`) in their respective dialects so that the
-cross-engine comparison in Section 12.5 measures the same algorithm
+cross-engine comparison in Section 9.7 measures the same algorithm
 on the same Zipfian inputs.
