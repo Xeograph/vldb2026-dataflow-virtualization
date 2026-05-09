@@ -53,7 +53,7 @@ harnesses accept `--scale {100m, 1b, 10b}` and pass through `--alpha`,
 The numbers in the paper's Table 7a were collected on two GCP shapes:
 
 * `n2-highmem-32` (Intel Cascade Lake, 32 vCPU, 256 GB RAM)
-* `n2d-highmem-96` (AMD EPYC Milan-X, 96 vCPU, 755 GB RAM)
+* `n2d-highmem-96` (AMD EPYC Milan, 96 vCPU, 755 GB RAM)
 
 Section 9.6.2 explains the per-node hardware correction used to
 extrapolate the `n2d-highmem-96` measurements onto a single Ocient
