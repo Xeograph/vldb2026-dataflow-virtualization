@@ -11,7 +11,7 @@ files are the dataflow programs shown in the paper's listings.
 
 ```bibtex
 @inproceedings{arnold2026virtualizing,
-  title     = {Virtualizing Recursion: Dataflow-Based Iterative SQL in an MPP Database},
+  title     = {Virtualizing Recursion: Just-In-Time Graph Analytics in a Hyperscale Relational Warehouse},
   author    = {Arnold, Jason and Stolze, Knut},
   booktitle = {Proceedings of the VLDB Endowment},
   year      = {2026},
