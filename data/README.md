@@ -50,19 +50,17 @@ with the WCC wall time, iteration count, and component count. Both
 harnesses accept `--scale {100m, 1b, 10b}` and pass through `--alpha`,
 `--host`, etc.
 
-The numbers in the paper's Table 7a were collected on two GCP shapes:
-
-* `n2-highmem-32` (Intel Cascade Lake, 32 vCPU, 256 GB RAM)
-* `n2d-highmem-96` (AMD EPYC Milan, 96 vCPU, 755 GB RAM)
-
-Section 9.6.2 explains the per-node hardware correction used to
-extrapolate the `n2d-highmem-96` measurements onto a single Ocient
-EPYC 9654 node for the comparison in Table 7b.
+The numbers in the paper's Section 9.6.2 (per-node and single-node
+extrapolation tables) were collected on the `n2d-highmem-96` GCP shape
+(96 vCPU AMD EPYC Milan, 755 GB RAM), the largest AMD-EPYC shape we
+could obtain without a quota-increase ticket. Section 9.6.2 explains
+the per-node hardware correction (5x) used to extrapolate those
+measurements onto a single Ocient EPYC 9654 node.
 
 ## Note on a fourth engine
 
 A reviewer-requested Vertica comparison was also conducted on the same
-two GCP shapes. The OpenText (formerly Micro Focus) End-User License
+GCP shape. The OpenText (formerly Micro Focus) End-User License
 Agreement that governs Vertica Community Edition forbids publishing
 benchmark results without prior written consent, so those numbers are
 not in the paper or this repository.
