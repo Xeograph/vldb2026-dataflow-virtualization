@@ -1,7 +1,7 @@
 # Data and Comparison Harnesses
 
 This directory holds the cross-engine WCC comparison harnesses used in
-Section 9.7 of the paper, and acts as the staging area for input
+Section 9.6 of the paper, and acts as the staging area for input
 datasets used by other experiments.
 
 ## Status
@@ -23,7 +23,7 @@ datasets used by other experiments.
 
   See `experiments/data_gen/README.md` for full usage.
 
-- **Section 9.7 cross-engine comparison** (DuckDB and Umbra on GCP)
+- **Section 9.6 cross-engine comparison** (DuckDB and Umbra on GCP)
   uses the harnesses in this directory: `duckdb_wcc_bench.py` and
   `umbra_wcc_bench.py`. Each harness generates the same Zipfian
   distribution (`alpha = 1.5`, seed `42`) used by the Ocient runs, then
@@ -55,7 +55,7 @@ The numbers in the paper's Table 7a were collected on two GCP shapes:
 * `n2-highmem-32` (Intel Cascade Lake, 32 vCPU, 256 GB RAM)
 * `n2d-highmem-96` (AMD EPYC Milan-X, 96 vCPU, 755 GB RAM)
 
-Section 9.7.2 explains the per-node hardware correction used to
+Section 9.6.2 explains the per-node hardware correction used to
 extrapolate the `n2d-highmem-96` measurements onto a single Ocient
 EPYC 9654 node for the comparison in Table 7b.
 

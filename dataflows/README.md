@@ -38,5 +38,5 @@ parameter mechanism described in Section 3.
 
 The DuckDB and Umbra harnesses in `../data/` re-implement the WCC
 listing (`wcc.sql`) in their respective dialects so that the
-cross-engine comparison in Section 9.7 measures the same algorithm
+cross-engine comparison in Section 9.6 measures the same algorithm
 on the same Zipfian inputs.

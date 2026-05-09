@@ -1,0 +1,1 @@
+{"engine": "duckdb", "version": "1.5.2", "scale": "100m", "num_vertices": 10000000, "num_edges": 100000000, "alpha": 1.5, "threads": 8, "mem_gb": 32, "vertex_gen_seconds": 0.252, "edge_gen_seconds": 17.731, "wcc_seconds": 38.04, "wcc_iterations": 8, "components": 3750}

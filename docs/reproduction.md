@@ -28,7 +28,7 @@ Experiment 5 used a distinct, higher-capacity cluster:
 - **Memory:** 2.3 TB RAM per node (24 x 96 GB)
 
 For the Spark comparison run in Experiment 5, a separate 5-node Apache
-Spark cluster was used (see paper Section 9.7 for details).
+Spark cluster was used (see paper Section 9.6 for details).
 
 ## Experiment-to-driver mapping
 
