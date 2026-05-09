@@ -38,10 +38,6 @@ Spark cluster was used (see paper Section 9.6 for details).
 | **Experiment 2** - Deep Recursion Scalability (up to 600 iterations; JIT Dataflow vs. Unrolled SQL) | `DeepRecursionExperiment.java` | |
 | **Experiment 3** - Throughput Scaling & Thresholds (5-iteration loop, 1k..10M rows, virtualization-to-physical crossover) | `ThroughputExperiment.java` | Targets the 65,536-row threshold. |
 | **Experiment 4** - Dynamic Dematerialization (reduction dataflow; 200k rows down to 0) | `DematerializationExperiment.java` | |
-| **Experiment 5** - Hyperscale WCC (synthetic Zipfian graphs; Spark vs. Ocient Legacy vs. Ocient Dataflow) | `BenchmarkConnectedComponents.java` (set `Scale.SCALE_*` to choose the input schema; assumes `<schema>.bench_vertices` and `<schema>.bench_edges` already exist on the cluster). The Zipfian graph generator that produced those tables is not bundled --- see `data/README.md`. |
+| **Experiment 5** - Hyperscale WCC (synthetic Zipfian graphs; Spark vs. Ocient Legacy vs. Ocient Dataflow) | `BenchmarkConnectedComponents.java` (set `Scale.SCALE_*` to choose the input schema; assumes `<schema>.bench_vertices` and `<schema>.bench_edges` already exist on the cluster). The Zipfian graph generator that populates those tables is at `experiments/data_gen/generate_zipfian_graph.py` (see `data/README.md`). |
 
 
-## TODOs
-
-- **Experiment 5 input graphs.** The Zipfian synthetic graph generator is
-  not yet bundled. See `data/README.md`.

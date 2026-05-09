@@ -49,4 +49,4 @@ release-acquire scheduling.
 python harness_release_acquire.py
 ```
 
-Requires a custom build of the database engine that exposes the `dataflowHoldsSlotForFullLifetime` mutable parameter as a session-level toggle.
+Requires a custom build of the database engine that exposes the `dataflowHoldsSlotForFullLifetime` mutable parameter as a session-level toggle. The mutable-parameter PR (Xeograph internal #47580) has been closed without merge for unrelated reasons, so this harness does not run against any shipped Ocient build today. It is included as the harness we would re-run once the parameter lands; the paper itself does not depend on its results, and the gap is acknowledged explicitly in Section 9.1.

@@ -14,10 +14,14 @@
 --   )
 --   SELECT node_id, MIN(depth) AS depth FROM Reachable GROUP BY node_id;
 --
--- @start_node and @max_depth are session-level parameters bound when
--- the recursive CTE is dispatched.
+-- For self-contained execution this listing declares @start_node and
+-- @max_depth inline (matching paper Listing 2). When dispatched by the
+-- transpiler from a recursive CTE, the same two variables are bound
+-- from the parsed CTE rather than from inline DECLAREs.
 
 BEGIN DATAFLOW
+  DECLARE @start_node BIGINT = 42;
+  DECLARE @max_depth BIGINT = 100;
   CREATE TABLE #R AS SELECT @start_node AS node_id, 0 AS depth;
   CREATE OR REPLACE TABLE #Q AS SELECT * FROM #R;
   WHILE ((SELECT count(*) FROM #Q) > 0) DO

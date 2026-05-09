@@ -79,9 +79,10 @@ script.
 
 ## Status
 
-Some artifacts are still being prepared. Synthetic graph generation
-scripts for Experiment 5 are not yet bundled (TODO; see
-`data/README.md`).
+All scripts referenced in the paper's evaluation section are bundled.
+The synthetic Zipfian (power-law) graph generator for Experiment 5 is
+at `experiments/data_gen/generate_zipfian_graph.py` (see
+`data/README.md` for usage).
 
 ## License
 
