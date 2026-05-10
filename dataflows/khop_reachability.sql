@@ -6,20 +6,21 @@
 -- The transpiler emits this from the standard recursive-CTE form:
 --
 --   WITH RECURSIVE Reachable(node_id, depth) AS (
---       SELECT @start_node, 0
+--       SELECT 42, 0
 --     UNION ALL
 --       SELECT e.dest, r.depth + 1
 --       FROM Reachable r JOIN Edges e ON r.node_id = e.src
---       WHERE r.depth < @max_depth
+--       WHERE r.depth < 100
 --   )
 --   SELECT node_id, MIN(depth) AS depth FROM Reachable GROUP BY node_id;
 --
--- For self-contained execution this listing declares @start_node and
--- @max_depth inline (matching paper Listing 2). When dispatched by the
--- transpiler from a recursive CTE, the same two variables are bound
--- from the parsed CTE rather than from inline DECLAREs.
+-- @start_node (42) and @max_depth (100) are inlined by the transpiler
+-- as DECLAREs in the dataflow body, taken directly from the literal
+-- values that appear in the recursive CTE's anchor SELECT and WHERE
+-- clause. (Dataflows do not have session-bound parameter binding;
+-- only stored procedures do. The transpiler always emits literals.)
 
-BEGIN DATAFLOW
+BEGIN QUERY DATAFLOW
   DECLARE @start_node BIGINT = 42;
   DECLARE @max_depth BIGINT = 100;
   CREATE TABLE #R AS SELECT @start_node AS node_id, 0 AS depth;

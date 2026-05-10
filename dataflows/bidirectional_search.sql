@@ -9,6 +9,14 @@
 -- cannot express directly.
 
 BEGIN DATAFLOW
+  -- @startNode and @endNode are illustrative literal values for a
+  -- self-contained run; in practice the user wires them through the
+  -- enclosing application or substitutes their own ids before
+  -- dispatching the dataflow. Dataflows do not have session-bound
+  -- parameter binding (only stored procedures do), so the values
+  -- are declared inline here.
+  DECLARE @startNode BIGINT = 1;
+  DECLARE @endNode BIGINT = 1000000;
   DECLARE @found INT = 0;
 
   -- Initialize frontiers
